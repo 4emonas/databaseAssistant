@@ -6,3 +6,11 @@ C:\Users\stel_\Documents\Visual Studio 2015\Projects\WindowsFormsApplication2\bi
 C:\Users\stel_\Documents\Visual Studio 2015\Projects\WindowsFormsApplication2\bin\Debug\WindowsFormsApplication2.pdb
 C:\Users\stel_\Documents\Visual Studio 2015\Projects\WindowsFormsApplication2\obj\Debug\WindowsFormsApplication2.exe
 C:\Users\stel_\Documents\Visual Studio 2015\Projects\WindowsFormsApplication2\obj\Debug\WindowsFormsApplication2.pdb
+C:\Users\stel_\Source\Repos\databaseAssistant\WindowsFormsApplication2\bin\Debug\WindowsFormsApplication2.exe.config
+C:\Users\stel_\Source\Repos\databaseAssistant\WindowsFormsApplication2\obj\Debug\WindowsFormsApplication2.exe
+C:\Users\stel_\Source\Repos\databaseAssistant\WindowsFormsApplication2\obj\Debug\WindowsFormsApplication2.pdb
+C:\Users\stel_\Source\Repos\databaseAssistant\WindowsFormsApplication2\bin\Debug\WindowsFormsApplication2.exe
+C:\Users\stel_\Source\Repos\databaseAssistant\WindowsFormsApplication2\bin\Debug\WindowsFormsApplication2.pdb
+C:\Users\stel_\Source\Repos\databaseAssistant\WindowsFormsApplication2\obj\Debug\WindowsFormsApplication2.csprojResolveAssemblyReference.cache
+C:\Users\stel_\Source\Repos\databaseAssistant\WindowsFormsApplication2\obj\Debug\WindowsFormsApplication2.Form1.resources
+C:\Users\stel_\Source\Repos\databaseAssistant\WindowsFormsApplication2\obj\Debug\WindowsFormsApplication2.csproj.GenerateResource.Cache
