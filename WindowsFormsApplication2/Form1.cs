@@ -37,6 +37,7 @@ namespace WindowsFormsApplication2
             {
                 connDb1 = new OleDbConnection(conn_string);
                 connDb1.Open();
+                //please work
             }
             catch (Exception)
             {
