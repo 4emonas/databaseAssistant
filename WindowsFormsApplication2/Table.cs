@@ -12,11 +12,12 @@ namespace WindowsFormsApplication2
     {
         //public variables
         public string tableName;
+        private List<List<string>> tableData = new List<List<string>>();
 
         //private variables
         private List<string> fields = new List<string>(); //the field names of the table
         private int tableRecordNumbers; //number of records each table has
-        
+
         //========== public functions ============//
 
         public Table()
@@ -24,7 +25,7 @@ namespace WindowsFormsApplication2
             tableName = "";
             tableRecordNumbers = 0;
         }
-        
+
         public Table(string tableName)
         {
             this.tableName = tableName;
@@ -34,6 +35,7 @@ namespace WindowsFormsApplication2
         {
             ReadInTableRecords(conn);   //get the table records
             ReadInTableFields(conn);    //get the table field names
+            ReadInTableData(conn);      //get the table data
         }
 
 
@@ -62,5 +64,29 @@ namespace WindowsFormsApplication2
             }
         }
 
+        //gets the data of each table
+        //the WAY IT WORKS is: read all the lines from each field and then insert the field to the tableData
+        private void ReadInTableData(OleDbConnection conn)
+        {
+            OleDbCommand command = new OleDbCommand();//important to initialise it outside the for (prevents crashing, increases performance)
+            for (int fieldsLoop = 0; fieldsLoop < fields.Count; fieldsLoop++)
+            {// go through the fields
+
+                command.CommandText = "select [" + fields[fieldsLoop] + "] from [" + tableName + "]"; //make the sql query 
+                command.Connection = conn;
+
+                OleDbDataReader reader = command.ExecuteReader();
+
+                List<string> currentFieldvalues = new List<string>(); //temp field
+                while (reader.Read()) //add the values to the temp field
+                {
+                    currentFieldvalues.Add(reader[0].ToString());
+                }
+                tableData.Add(currentFieldvalues); //add the temp field to the tableData
+
+                reader.Close(); //reset the reader
+            }
+        }
     }
+
 }

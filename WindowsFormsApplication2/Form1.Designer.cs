@@ -257,8 +257,6 @@
             this.databasePath1.Name = "databasePath1";
             this.databasePath1.Size = new System.Drawing.Size(178, 20);
             this.databasePath1.TabIndex = 6;
-            //this.databasePath1.Click += new System.EventHandler(this.databasePath1_Click); stelios
-            //this.databasePath1.DoubleClick += new System.EventHandler(this.databasePath1_DoubleClick);
             // 
             // databasePath2
             // 
@@ -268,8 +266,6 @@
             this.databasePath2.Name = "databasePath2";
             this.databasePath2.Size = new System.Drawing.Size(178, 20);
             this.databasePath2.TabIndex = 7;
-            //this.databasePath2.Click += new System.EventHandler(this.databasePath2_Click);stelios
-            //this.databasePath2.DoubleClick += new System.EventHandler(this.databasePath2_DoubleClick);stelios
             // 
             // tableLayoutPanel3
             // 
