@@ -6,7 +6,7 @@ namespace WindowsFormsApplication2
 {
     class Database
     {
-        private List<Table> tables = new List<Table>();
+        public List<Table> tables = new List<Table>();
 
         public Database()
         { 

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.OleDb;
+using System.Data.SqlClient;
 
 namespace WindowsFormsApplication2
 {
@@ -17,9 +18,7 @@ namespace WindowsFormsApplication2
         OleDbConnection connDb2 = new OleDbConnection();
         Database Database1 = new Database();
         Database Database2 = new Database();
-
-        List<List<List<string>>> db1Data = new List<List<List<string>>>(); 
-        List<List<List<string>>> db2Data = new List<List<List<string>>>();
+        Visualiser visio = new Visualiser();
         
         public Form1()
         {
@@ -161,46 +160,11 @@ namespace WindowsFormsApplication2
         }
 
         //needs to be done TODO
-        private short CompareDatabases()
+        private short CompareDatabases() //keeping this function for testing
         {
-            List<string> db1TableNames = new List<string>();
-            List<string> db2TableNames = new List<string>();
-            db1TableNames = ReadDatabaseNames(connDb1);//table names
-            db2TableNames = ReadDatabaseNames(connDb2);
-
-            //@temp2dList = columns
-            List<List<string>> temp2dList = new List<List<string>>(); 
-            for (int loop = 0; loop < db1TableNames.Count; loop++) {  //start running through the tables
-                List<string> db1Tablecolumns = GetTableColumnList(connDb1, db1TableNames[loop]); //table columns
-               // db1Data.Add(db1Tablecolumns);
-                for (int dataloop = 0; dataloop < db1Tablecolumns.Count; dataloop++)
-                {
-                    OleDbCommand command = new OleDbCommand("select "+db1Tablecolumns[dataloop]+" from " + db1TableNames[loop], connDb1);
-                    OleDbDataReader reader = command.ExecuteReader();
-                    List<string> values = new List<string>();
-                    while (reader.Read())
-                    {
-                        values.Add(reader[0].ToString());
-                    }
-                    temp2dList.Add(values); //add the values to one column
-                    db1Data.Add(temp2dList); //add the column to the db1Data
-                    
-                    //temp2dList.Clear(); //clear the list to accept the new values
-                }
-
-            }
-            
-            for (int loop = 0; loop <db2TableNames.Count; loop++)
-            {
-                List<string> db2Tablecolumns = GetTableColumnList(connDb2, db2TableNames[loop]);
-                for (int dataloop = 0; dataloop < db2Tablecolumns.Count; dataloop++)
-                {
-                    //todo: read values
-                }
-            }
-            
-
-            return 0;
+            visio.ShowTableData(Database1.tables[1], dataGridView1, connDb1);
+           
+                return 0;
         }
 
         //i think is ok
@@ -256,6 +220,11 @@ namespace WindowsFormsApplication2
         private void searchToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MessageBox.Show("comming soon....");
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
