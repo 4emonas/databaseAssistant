@@ -127,6 +127,7 @@ namespace WindowsFormsApplication2
             }
         }
 
+        //needs change
         private List<string> ReadDatabaseNames(OleDbConnection conn)
         {
             string[] restrictions = new string[4];
@@ -140,6 +141,7 @@ namespace WindowsFormsApplication2
             return TableNames;
         }
 
+        //needs change 
         private List<string> GetTableColumnList(OleDbConnection connDb1, string tableName)
         {
             List<string> db1ColumnList = new List<string>();
@@ -158,6 +160,7 @@ namespace WindowsFormsApplication2
             return db1ColumnList;
         }
 
+        //needs to be done TODO
         private short CompareDatabases()
         {
             List<string> db1TableNames = new List<string>();
@@ -200,6 +203,7 @@ namespace WindowsFormsApplication2
             return 0;
         }
 
+        //i think is ok
         private void ShowNoOpenDatabasesErrorMessage()
         {
             String errorString = "The ";
@@ -208,7 +212,6 @@ namespace WindowsFormsApplication2
                 errorString += "first database is ";
                 if (!(connDb2.State == ConnectionState.Open))
                 {
-                    //4
                     errorString = "the databases are ";
                 }
             }
@@ -249,6 +252,7 @@ namespace WindowsFormsApplication2
             openDbButton2.ForeColor = Color.FromArgb(0, 0, 0);
         }
 
+        //needs to be done TODO
         private void searchToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MessageBox.Show("comming soon....");
