@@ -40,15 +40,17 @@ namespace WindowsFormsApplication2
 
         //========== private functions ===========//
 
-        private void ReadInTableRecords(OleDbConnection conn) //gets the number of records in each table
+        //gets the number of records in each table
+        private void ReadInTableRecords(OleDbConnection conn)
         {
-            OleDbCommand cmd = new OleDbCommand("select count(*) from " + tableName, conn);
-            tableRecordNumbers = (int) cmd.ExecuteScalar();
+            OleDbCommand cmd = new OleDbCommand("select count(*) from [" + tableName + "]", conn);
+            tableRecordNumbers = (int)cmd.ExecuteScalar();
         }
 
-        private void ReadInTableFields(OleDbConnection conn) //gets all the field names of the table
+        //gets all the field names of the table
+        private void ReadInTableFields(OleDbConnection conn)
         {
-            OleDbCommand cmd = new OleDbCommand("select * from " + tableName, conn);
+            OleDbCommand cmd = new OleDbCommand("select * from [" + tableName + "]", conn);
             OleDbDataReader reader = cmd.ExecuteReader(CommandBehavior.SchemaOnly);
             {
                 DataTable table = reader.GetSchemaTable();
