@@ -70,12 +70,13 @@
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 0, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 41F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(895, 449);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(671, 365);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // menuStrip1
@@ -88,7 +89,8 @@
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(895, 35);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(671, 28);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -97,13 +99,13 @@
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(44, 31);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 24);
             this.fileToolStripMenuItem.Text = "File";
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(108, 26);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(93, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -114,14 +116,14 @@
             this.closeToolStripMenuItem,
             this.searchToolStripMenuItem});
             this.databasesToolStripMenuItem.Name = "databasesToolStripMenuItem";
-            this.databasesToolStripMenuItem.Size = new System.Drawing.Size(90, 31);
+            this.databasesToolStripMenuItem.Size = new System.Drawing.Size(72, 24);
             this.databasesToolStripMenuItem.Text = "Databases";
             // 
             // compareToolStripMenuItem
             // 
             this.compareToolStripMenuItem.Name = "compareToolStripMenuItem";
             this.compareToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F5;
-            this.compareToolStripMenuItem.Size = new System.Drawing.Size(169, 26);
+            this.compareToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.compareToolStripMenuItem.Text = "Compare";
             this.compareToolStripMenuItem.Click += new System.EventHandler(this.compareToolStripMenuItem_Click);
             // 
@@ -131,27 +133,27 @@
             this.database1ToolStripMenuItem,
             this.database2ToolStripMenuItem});
             this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
-            this.closeToolStripMenuItem.Size = new System.Drawing.Size(169, 26);
+            this.closeToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.closeToolStripMenuItem.Text = "Close";
             // 
             // database1ToolStripMenuItem
             // 
             this.database1ToolStripMenuItem.Name = "database1ToolStripMenuItem";
-            this.database1ToolStripMenuItem.Size = new System.Drawing.Size(159, 26);
+            this.database1ToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
             this.database1ToolStripMenuItem.Text = "Database 1";
             this.database1ToolStripMenuItem.Click += new System.EventHandler(this.database1ToolStripMenuItem_Click);
             // 
             // database2ToolStripMenuItem
             // 
             this.database2ToolStripMenuItem.Name = "database2ToolStripMenuItem";
-            this.database2ToolStripMenuItem.Size = new System.Drawing.Size(159, 26);
+            this.database2ToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
             this.database2ToolStripMenuItem.Text = "Database 2";
             this.database2ToolStripMenuItem.Click += new System.EventHandler(this.database2ToolStripMenuItem_Click);
             // 
             // searchToolStripMenuItem
             // 
             this.searchToolStripMenuItem.Name = "searchToolStripMenuItem";
-            this.searchToolStripMenuItem.Size = new System.Drawing.Size(169, 26);
+            this.searchToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.searchToolStripMenuItem.Text = "Search";
             this.searchToolStripMenuItem.Click += new System.EventHandler(this.searchToolStripMenuItem_Click);
             // 
@@ -161,20 +163,20 @@
             this.manualToolStripMenuItem,
             this.contactUsToolStripMenuItem});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(53, 31);
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 24);
             this.helpToolStripMenuItem.Text = "Help";
             // 
             // manualToolStripMenuItem
             // 
             this.manualToolStripMenuItem.Name = "manualToolStripMenuItem";
             this.manualToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F1;
-            this.manualToolStripMenuItem.Size = new System.Drawing.Size(157, 26);
+            this.manualToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.manualToolStripMenuItem.Text = "Manual";
             // 
             // contactUsToolStripMenuItem
             // 
             this.contactUsToolStripMenuItem.Name = "contactUsToolStripMenuItem";
-            this.contactUsToolStripMenuItem.Size = new System.Drawing.Size(157, 26);
+            this.contactUsToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.contactUsToolStripMenuItem.Text = "Contact Us";
             // 
             // tableLayoutPanel2
@@ -193,32 +195,34 @@
             this.tableLayoutPanel2.Controls.Add(this.databasePath1, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.databasePath2, 4, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 38);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(2, 30);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(889, 44);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(667, 37);
             this.tableLayoutPanel2.TabIndex = 1;
             // 
             // labelDatabasePath1
             // 
             this.labelDatabasePath1.AutoSize = true;
             this.labelDatabasePath1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelDatabasePath1.Location = new System.Drawing.Point(3, 5);
-            this.labelDatabasePath1.Margin = new System.Windows.Forms.Padding(3, 5, 3, 0);
+            this.labelDatabasePath1.Location = new System.Drawing.Point(2, 4);
+            this.labelDatabasePath1.Margin = new System.Windows.Forms.Padding(2, 4, 2, 0);
             this.labelDatabasePath1.Name = "labelDatabasePath1";
-            this.labelDatabasePath1.Size = new System.Drawing.Size(104, 39);
+            this.labelDatabasePath1.Size = new System.Drawing.Size(79, 33);
             this.labelDatabasePath1.TabIndex = 0;
             this.labelDatabasePath1.Text = "Database Location 1";
             // 
             // openDbButton1
             // 
             this.openDbButton1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.openDbButton1.Location = new System.Drawing.Point(356, 3);
+            this.openDbButton1.Location = new System.Drawing.Point(267, 2);
+            this.openDbButton1.Margin = new System.Windows.Forms.Padding(2);
             this.openDbButton1.Name = "openDbButton1";
-            this.openDbButton1.Size = new System.Drawing.Size(84, 38);
+            this.openDbButton1.Size = new System.Drawing.Size(63, 33);
             this.openDbButton1.TabIndex = 2;
-            this.openDbButton1.Text = "Open";
+            this.openDbButton1.Text = "Browse";
             this.openDbButton1.UseVisualStyleBackColor = true;
             this.openDbButton1.Click += new System.EventHandler(this.openDbButton1_Click);
             // 
@@ -226,45 +230,46 @@
             // 
             this.labelDatabasePath2.AutoSize = true;
             this.labelDatabasePath2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelDatabasePath2.Location = new System.Drawing.Point(446, 5);
-            this.labelDatabasePath2.Margin = new System.Windows.Forms.Padding(3, 5, 3, 0);
+            this.labelDatabasePath2.Location = new System.Drawing.Point(334, 4);
+            this.labelDatabasePath2.Margin = new System.Windows.Forms.Padding(2, 4, 2, 0);
             this.labelDatabasePath2.Name = "labelDatabasePath2";
-            this.labelDatabasePath2.Size = new System.Drawing.Size(104, 39);
+            this.labelDatabasePath2.Size = new System.Drawing.Size(79, 33);
             this.labelDatabasePath2.TabIndex = 3;
             this.labelDatabasePath2.Text = "Database Location 2";
             // 
             // openDbButton2
             // 
             this.openDbButton2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.openDbButton2.Location = new System.Drawing.Point(799, 3);
+            this.openDbButton2.Location = new System.Drawing.Point(599, 2);
+            this.openDbButton2.Margin = new System.Windows.Forms.Padding(2);
             this.openDbButton2.Name = "openDbButton2";
-            this.openDbButton2.Size = new System.Drawing.Size(87, 38);
+            this.openDbButton2.Size = new System.Drawing.Size(66, 33);
             this.openDbButton2.TabIndex = 5;
-            this.openDbButton2.Text = "Open";
+            this.openDbButton2.Text = "Browse";
             this.openDbButton2.UseVisualStyleBackColor = true;
             this.openDbButton2.Click += new System.EventHandler(this.openDbButton2_Click);
             // 
             // databasePath1
             // 
             this.databasePath1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.databasePath1.Location = new System.Drawing.Point(113, 12);
-            this.databasePath1.Margin = new System.Windows.Forms.Padding(3, 12, 3, 3);
+            this.databasePath1.Location = new System.Drawing.Point(85, 10);
+            this.databasePath1.Margin = new System.Windows.Forms.Padding(2, 10, 2, 2);
             this.databasePath1.Name = "databasePath1";
-            this.databasePath1.Size = new System.Drawing.Size(237, 22);
+            this.databasePath1.Size = new System.Drawing.Size(178, 20);
             this.databasePath1.TabIndex = 6;
-            this.databasePath1.Click += new System.EventHandler(this.databasePath1_Click);
-            this.databasePath1.DoubleClick += new System.EventHandler(this.databasePath1_DoubleClick);
+            //this.databasePath1.Click += new System.EventHandler(this.databasePath1_Click); stelios
+            //this.databasePath1.DoubleClick += new System.EventHandler(this.databasePath1_DoubleClick);
             // 
             // databasePath2
             // 
             this.databasePath2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.databasePath2.Location = new System.Drawing.Point(556, 12);
-            this.databasePath2.Margin = new System.Windows.Forms.Padding(3, 12, 3, 3);
+            this.databasePath2.Location = new System.Drawing.Point(417, 10);
+            this.databasePath2.Margin = new System.Windows.Forms.Padding(2, 10, 2, 2);
             this.databasePath2.Name = "databasePath2";
-            this.databasePath2.Size = new System.Drawing.Size(237, 22);
+            this.databasePath2.Size = new System.Drawing.Size(178, 20);
             this.databasePath2.TabIndex = 7;
-            this.databasePath2.Click += new System.EventHandler(this.databasePath2_Click);
-            this.databasePath2.DoubleClick += new System.EventHandler(this.databasePath2_DoubleClick);
+            //this.databasePath2.Click += new System.EventHandler(this.databasePath2_Click);stelios
+            //this.databasePath2.DoubleClick += new System.EventHandler(this.databasePath2_DoubleClick);stelios
             // 
             // tableLayoutPanel3
             // 
@@ -274,11 +279,12 @@
             this.tableLayoutPanel3.Controls.Add(this.dataGridView1, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.dataGridView2, 1, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 88);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(2, 71);
+            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(889, 358);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(667, 292);
             this.tableLayoutPanel3.TabIndex = 2;
             // 
             // dataGridView1
@@ -286,10 +292,11 @@
             this.dataGridView1.AllowUserToOrderColumns = true;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 3);
+            this.dataGridView1.Location = new System.Drawing.Point(2, 2);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(438, 352);
+            this.dataGridView1.Size = new System.Drawing.Size(329, 288);
             this.dataGridView1.TabIndex = 0;
             // 
             // dataGridView2
@@ -297,10 +304,11 @@
             this.dataGridView2.AllowUserToOrderColumns = true;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView2.Location = new System.Drawing.Point(447, 3);
+            this.dataGridView2.Location = new System.Drawing.Point(335, 2);
+            this.dataGridView2.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowTemplate.Height = 24;
-            this.dataGridView2.Size = new System.Drawing.Size(439, 352);
+            this.dataGridView2.Size = new System.Drawing.Size(330, 288);
             this.dataGridView2.TabIndex = 1;
             // 
             // openFileDialogDatabase1
@@ -313,11 +321,12 @@
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(895, 449);
+            this.ClientSize = new System.Drawing.Size(671, 365);
             this.Controls.Add(this.tableLayoutPanel1);
             this.MainMenuStrip = this.menuStrip1;
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
             this.Text = "Form1";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
