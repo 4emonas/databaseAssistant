@@ -15,6 +15,8 @@ namespace WindowsFormsApplication2
     {
         OleDbConnection connDb1 = new OleDbConnection();
         OleDbConnection connDb2 = new OleDbConnection();
+        Database Database1 = new Database();
+        Database Database2 = new Database();
 
         List<List<List<string>>> db1Data = new List<List<List<string>>>(); 
         List<List<List<string>>> db2Data = new List<List<List<string>>>();
@@ -52,6 +54,7 @@ namespace WindowsFormsApplication2
 
             if (connDb1.State == ConnectionState.Open)
             {
+                Database1.InitialiseDatabase(connDb1);
                 openDbButton1.Text = "Opened";
                 openDbButton1.ForeColor = Color.FromArgb(50, 200, 50);
             }
@@ -78,6 +81,7 @@ namespace WindowsFormsApplication2
 
             if (connDb2.State == ConnectionState.Open)
             {
+                Database2.InitialiseDatabase(connDb2);
                 openDbButton2.Text = "Opened";
                 openDbButton2.ForeColor = Color.FromArgb(50, 200, 50);
             }
