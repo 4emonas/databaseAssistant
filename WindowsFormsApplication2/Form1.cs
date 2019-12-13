@@ -30,7 +30,27 @@ namespace WindowsFormsApplication2
         {
             Application.Exit();
         }
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (databasePath1.Text != "")
+            {
+                try
+                {
+                    connDb1.Close();
+                }
+                catch (Exception ex) { MessageBox.Show(ex.Message); }
+            }
 
+            if (databasePath2.Text != "")
+            {
+                try
+                {
+                    connDb2.Close();
+                }
+                catch (Exception ex) { MessageBox.Show(ex.Message); }
+            }
+
+        }
 
         //dupplicate code with openDbButton2_Click. Need a function to take inputs and do w/e this function does.
         private void openDbButton1_Click(object sender, EventArgs e)
