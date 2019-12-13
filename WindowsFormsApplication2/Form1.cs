@@ -32,8 +32,18 @@ namespace WindowsFormsApplication2
         }
 
 
+        //dupplicate code with openDbButton2_Click. Need a function to take inputs and do w/e this function does.
         private void openDbButton1_Click(object sender, EventArgs e)
         {
+            //dialog to find database
+            using (OpenFileDialog openFileDialogDatabase1 = new OpenFileDialog())
+            {
+                if (openFileDialogDatabase1.ShowDialog() == DialogResult.OK)
+                {
+                    databasePath1.Text = openFileDialogDatabase1.FileName;
+                }
+            }
+
             String conn_string = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + databasePath1.Text + ";Persist Security Info=False";
             try
             {
@@ -60,8 +70,18 @@ namespace WindowsFormsApplication2
             }
         }
 
+        //TODO: same as above
         private void openDbButton2_Click(object sender, EventArgs e)
         {
+            //dialog to find database
+            using (OpenFileDialog openFileDialogDatabase2 = new OpenFileDialog())
+            {
+                if (openFileDialogDatabase2.ShowDialog() == DialogResult.OK)
+                {
+                    databasePath2.Text = openFileDialogDatabase2.FileName;
+                }
+            }
+
             String conn_string = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + databasePath2.Text + ";Persist Security Info=False";
             try
             {
