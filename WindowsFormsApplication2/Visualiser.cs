@@ -34,7 +34,7 @@ namespace WindowsFormsApplication2
             {
                 DataSet ds = new DataSet();
                 adapter.Fill(ds);
-                dgv.DataSource = ds.Tables[0];
+                dgv.DataSource = ds.Tables[0]; //test stelios
             }
         }
 
