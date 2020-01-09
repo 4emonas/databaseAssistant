@@ -24,7 +24,7 @@ namespace WindowsFormsApplication2
 
             listview.Columns.AddRange(new ColumnHeader[] { columnHeader1 });
             listview.FullRowSelect = true;
-            listview.GridLines = true;
+            //listview.GridLines = true;
             listview.View = View.Details;
             for (int i = 0; i < db.tables.Count; i++)
             {

@@ -33,5 +33,17 @@ namespace WindowsFormsApplication2
             }
 
         }
+
+        public Table getTableObject(string requestedTableName)
+        {
+            for (int i = 0; i < tables.Count; i++)
+            {
+                if (tables[i].tableName == requestedTableName)
+                {
+                    return tables[i];
+                }
+            }
+            return tables[0];
+        }
     }
 }

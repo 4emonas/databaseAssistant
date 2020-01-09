@@ -236,6 +236,16 @@ namespace WindowsFormsApplication2
             e.NewWidth = this.listView2.Columns[e.ColumnIndex].Width;
             e.Cancel = true;
         }
+
+        private void listView1_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
+        {
+            visio.ShowTableData(Database1.getTableObject(e.Item.Text), dataGridView1, connDb1);
+        }
+
+        private void listView2_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
+        {
+            visio.ShowTableData(Database2.getTableObject(e.Item.Text), dataGridView2, connDb2);
+        }
     }
 }
 
