@@ -86,6 +86,8 @@ namespace WindowsFormsApplication2
                 Database1.InitialiseDatabase(connDb1);
                 openDbButton1.Text = "Opened";
                 openDbButton1.ForeColor = Color.FromArgb(50, 200, 50);
+
+                visio.ShowTables(listView1, Database1);
             }
         }
 
@@ -123,6 +125,7 @@ namespace WindowsFormsApplication2
                 Database2.InitialiseDatabase(connDb2);
                 openDbButton2.Text = "Opened";
                 openDbButton2.ForeColor = Color.FromArgb(50, 200, 50);
+                visio.ShowTables(listView2, Database2);
             }
         }
 
