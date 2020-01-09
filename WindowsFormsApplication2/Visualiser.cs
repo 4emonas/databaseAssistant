@@ -15,11 +15,22 @@ namespace WindowsFormsApplication2
 
         //shows a list of tables
         //tableform: LEFT or RIGHT (from constants.cs)
-        public void ShowTables(int tableForm, Database db)
+        public void ShowTables(ListView listview, Database db)
         {
-            if ((tableForm != Constants.LEFT) || (tableForm != Constants.RIGHT)) return; //error handling
+            listview.Clear();
+            ColumnHeader columnHeader1 = new ColumnHeader();
+            columnHeader1.Text = "Tables";
 
 
+            listview.Columns.AddRange(new ColumnHeader[] { columnHeader1 });
+            listview.FullRowSelect = true;
+            listview.GridLines = true;
+            listview.View = View.Details;
+            for (int i = 0; i < db.tables.Count; i++)
+            {
+                listview.Items.Add(db.tables[i].tableName);
+            }
+            listview.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
         }
 
         //shows all the table data
@@ -29,7 +40,7 @@ namespace WindowsFormsApplication2
             {
                 DataSet ds = new DataSet();
                 adapter.Fill(ds);
-                dgv.DataSource = ds.Tables[0]; //test stelios
+                dgv.DataSource = ds.Tables[0];
             }
         }
 
