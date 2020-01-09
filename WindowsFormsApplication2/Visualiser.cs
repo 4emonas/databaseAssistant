@@ -31,6 +31,7 @@ namespace WindowsFormsApplication2
                 listview.Items.Add(db.tables[i].tableName);
             }
             listview.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+
         }
 
         //shows all the table data
@@ -41,6 +42,7 @@ namespace WindowsFormsApplication2
                 DataSet ds = new DataSet();
                 adapter.Fill(ds);
                 dgv.DataSource = ds.Tables[0];
+                dgv.ReadOnly = true;
             }
         }
 
