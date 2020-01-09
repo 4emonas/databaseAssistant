@@ -86,6 +86,8 @@ namespace WindowsFormsApplication2
                 Database1.InitialiseDatabase(connDb1);
                 openDbButton1.Text = "Opened";
                 openDbButton1.ForeColor = Color.FromArgb(50, 200, 50);
+                
+                visio.ShowTables(listView1, Database1);
             }
         }
 
@@ -123,6 +125,7 @@ namespace WindowsFormsApplication2
                 Database2.InitialiseDatabase(connDb2);
                 openDbButton2.Text = "Opened";
                 openDbButton2.ForeColor = Color.FromArgb(50, 200, 50);
+                visio.ShowTables(listView2, Database2);
             }
         }
 
@@ -222,9 +225,26 @@ namespace WindowsFormsApplication2
             MessageBox.Show("comming soon....");
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void listView1_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
         {
+            e.NewWidth = this.listView1.Columns[e.ColumnIndex].Width;
+            e.Cancel = true;
+        }
 
+        private void listView2_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
+        {
+            e.NewWidth = this.listView2.Columns[e.ColumnIndex].Width;
+            e.Cancel = true;
+        }
+
+        private void listView1_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
+        {
+            visio.ShowTableData(Database1.getTableObject(e.Item.Text), dataGridView1, connDb1);
+        }
+
+        private void listView2_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
+        {
+            visio.ShowTableData(Database2.getTableObject(e.Item.Text), dataGridView2, connDb2);
         }
     }
 }
