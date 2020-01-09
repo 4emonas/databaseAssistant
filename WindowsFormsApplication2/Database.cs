@@ -17,7 +17,8 @@ namespace WindowsFormsApplication2
             ReadInDatabaseTables(conn);
         }
 
-        private void ReadInDatabaseTables(OleDbConnection conn) //finds the list of tables and initialises each of them
+        //finds the list of tables and initialises each of them
+        private void ReadInDatabaseTables(OleDbConnection conn) 
         {
 
             string[] restrictions = new string[4];
@@ -34,6 +35,7 @@ namespace WindowsFormsApplication2
 
         }
 
+        //gets a string as an input and returns the table object with that name
         public Table getTableObject(string requestedTableName)
         {
             for (int i = 0; i < tables.Count; i++)
@@ -43,7 +45,7 @@ namespace WindowsFormsApplication2
                     return tables[i];
                 }
             }
-            return tables[0];
+            return tables[0]; //returns the first table in the database if an incorrect table name was passed
         }
     }
 }
