@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Data;
 using System.Data.OleDb;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace WindowsFormsApplication2 
@@ -60,8 +61,11 @@ namespace WindowsFormsApplication2
                     }
                 }
             }
-            
+
+            ShowTablesWithFieldDifferences(dbLeft, dbRight, commonTables, listViewLeft, listViewRight);
             ShowDifferentTables(dbLeft, dbRight, commonTables, listViewLeft, listViewRight);
+            
+
         }
 
         private void ShowDifferentTables(Database dbLeft, Database dbRight, List<string> commonTables, ListView listViewLeft, ListView listViewRight) 
@@ -76,7 +80,7 @@ namespace WindowsFormsApplication2
                 {
                     if (!commonTables.Contains(dbLeft.tables[i].tableName))
                     {
-                        ChangeListItemColour(listViewLeft, i);
+                        ChangeListItemColour(listViewLeft, i, "red");
                     }
                 }
 
@@ -84,15 +88,83 @@ namespace WindowsFormsApplication2
                 {
                     if (!commonTables.Contains(dbRight.tables[i].tableName))
                     {
-                        ChangeListItemColour(listViewRight, i);
+                        ChangeListItemColour(listViewRight, i, "red");
                     }
                 }                
             }
         }
 
-        private void ChangeListItemColour(ListView listView, int tableIndex)
+        private void ShowTablesWithFieldDifferences(Database dbLeft, Database dbRight, List<string> commonTables, ListView listViewLeft, ListView listViewRight)
         {
-            listView.Items[tableIndex].BackColor = System.Drawing.Color.Green;
+            for (int i = 0; i< commonTables.Count; i++)
+            {
+                var lefttNotRight = dbLeft.getTableObject(commonTables[i]).GetFields().Except(dbRight.getTableObject(commonTables[i]).GetFields()).ToList();
+                var rightNotLeft = dbRight.getTableObject(commonTables[i]).GetFields().Except(dbLeft.getTableObject(commonTables[i]).GetFields()).ToList();
+
+                if ((lefttNotRight.Count > 0) || (rightNotLeft.Count > 0))
+                {
+                    for (int j = 0; j < listViewLeft.Items.Count; j++)
+                    {
+                        if (listViewLeft.Items[j].Text == commonTables[i])
+                        {
+                            ChangeListItemColour(listViewLeft, j, "blue");
+                            break;
+                        }
+                    }
+
+                    for (int j = 0; j < listViewRight.Items.Count; j++)
+                    {
+                        if (listViewRight.Items[j].Text == commonTables[i])
+                        {
+                            ChangeListItemColour(listViewRight, j, "blue");
+                            break;
+                        }
+                    }
+                }
+
+            }
+        }
+
+        private void ChangeListItemColour(ListView listView, int tableIndex, string colour)
+        {
+            if (colour == "red")
+            {
+                listView.Items[tableIndex].BackColor = System.Drawing.Color.Red;
+            }
+            else if (colour == "green")
+            {
+                listView.Items[tableIndex].BackColor = System.Drawing.Color.Green;
+            }
+            else if (colour == "blue")
+            {
+                listView.Items[tableIndex].BackColor = System.Drawing.Color.Teal;
+            }
+            else if (colour == "white")
+            {
+                listView.Items[tableIndex].BackColor = System.Drawing.Color.White;
+            }
+            
+        }
+
+
+        public void ResetComparison(ListView listviewLeft, ListView listviewRight)
+        {
+            int maxIteration = 0;
+
+            maxIteration = (listviewLeft.Items.Count >= listviewRight.Items.Count) ? listviewLeft.Items.Count : listviewRight.Items.Count;
+
+            for (int i = 0; i<maxIteration; i++)
+            {
+                if (i < listviewLeft.Items.Count)
+                {
+                    ChangeListItemColour(listviewLeft, i, "white");
+                }
+
+                if (i < listviewRight.Items.Count)
+                {
+                    ChangeListItemColour(listviewRight, i, "white");
+                }
+            }
         }
 
         public void ClearData(ListView listview, DataGridView datagridview, Database database)
