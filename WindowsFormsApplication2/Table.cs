@@ -21,6 +21,7 @@ namespace WindowsFormsApplication2
         public List<string> GetFields(){ return fields;}
 
         private int tableRecordNumbers; //number of records each table has
+        public int GetTableRecordNumbers() { return tableRecordNumbers; }
 
         //========== public functions ============//
 
@@ -69,7 +70,7 @@ namespace WindowsFormsApplication2
         }
 
         //gets the data of each table
-        //the WAY IT WORKS is: read all the lines from each field and then insert the field to the tableData
+        //THE WAY IT WORKS is: read all the lines from each field and then insert the field to the tableData
         private void ReadInTableData(OleDbConnection conn)
         {
             OleDbCommand command = new OleDbCommand();//important to initialise it outside the for (prevents crashing, increases performance)
