@@ -16,17 +16,14 @@ namespace WindowsFormsApplication2
         }
 
         //shows a list of tables
-        //tableform: LEFT or RIGHT (from constants.cs)
         public void ShowTables(ListView listview, Database db)
         {
             listview.Clear();
             ColumnHeader columnHeader1 = new ColumnHeader();
             columnHeader1.Text = "Tables";
             
-
             listview.Columns.AddRange(new ColumnHeader[] { columnHeader1 });
             listview.FullRowSelect = true;
-            //listview.GridLines = true;
             listview.View = View.Details;
             for (int i = 0; i < db.tables.Count; i++)
             {
@@ -46,6 +43,7 @@ namespace WindowsFormsApplication2
             }
         }
 
+        //Main functionality of the app. Compares two databases together
         public void CompareDatabases(Database dbLeft,Database dbRight, ListView listViewLeft, ListView listViewRight)
         {
             List<string> commonTables = new List<string>();
@@ -68,6 +66,7 @@ namespace WindowsFormsApplication2
 
         }
 
+        //flags the tables that are not common between the databases
         private void ShowDifferentTables(Database dbLeft, Database dbRight, List<string> commonTables, ListView listViewLeft, ListView listViewRight) 
         {
             int maxItteration = 0;
@@ -77,23 +76,24 @@ namespace WindowsFormsApplication2
             for (int i = 0; i < maxItteration; i++)
             {
                 if (i < dbLeft.tables.Count)
-                {
+                {//out of bounds protection
                     if (!commonTables.Contains(dbLeft.tables[i].tableName))
-                    {
+                    {//if the table name exists in the commonTables
                         ChangeListItemColour(listViewLeft, i, "red");
                     }
                 }
 
                 if (i < dbRight.tables.Count)
-                {
+                {//out of bounds protection
                     if (!commonTables.Contains(dbRight.tables[i].tableName))
-                    {
+                    {//if the table name exists in the commonTables
                         ChangeListItemColour(listViewRight, i, "red");
                     }
                 }                
             }
         }
 
+        //flags the tables that dont have the same amount of fields
         private void ShowTablesWithFieldDifferences(Database dbLeft, Database dbRight, List<string> commonTables, ListView listViewLeft, ListView listViewRight)
         {
             for (int i = 0; i< commonTables.Count; i++)
@@ -102,9 +102,9 @@ namespace WindowsFormsApplication2
                 var rightNotLeft = dbRight.getTableObject(commonTables[i]).GetFields().Except(dbLeft.getTableObject(commonTables[i]).GetFields()).ToList();
 
                 if ((lefttNotRight.Count > 0) || (rightNotLeft.Count > 0))
-                {
+                {//if there are differences in the fields
                     for (int j = 0; j < listViewLeft.Items.Count; j++)
-                    {
+                    {//find the table with this specific name in the list
                         if (listViewLeft.Items[j].Text == commonTables[i])
                         {
                             ChangeListItemColour(listViewLeft, j, "blue");
@@ -113,7 +113,7 @@ namespace WindowsFormsApplication2
                     }
 
                     for (int j = 0; j < listViewRight.Items.Count; j++)
-                    {
+                    {//find the table with this specific name in the list
                         if (listViewRight.Items[j].Text == commonTables[i])
                         {
                             ChangeListItemColour(listViewRight, j, "blue");
@@ -125,6 +125,7 @@ namespace WindowsFormsApplication2
             }
         }
 
+        //changes the background colour of the tables list
         private void ChangeListItemColour(ListView listView, int tableIndex, string colour)
         {
             if (colour == "red")
@@ -146,27 +147,27 @@ namespace WindowsFormsApplication2
             
         }
 
-
-        public void ResetComparison(ListView listviewLeft, ListView listviewRight)
+        //resets the background colours in the lists
         {
             int maxIteration = 0;
 
             maxIteration = (listviewLeft.Items.Count >= listviewRight.Items.Count) ? listviewLeft.Items.Count : listviewRight.Items.Count;
 
-            for (int i = 0; i<maxIteration; i++)
+            for (int i = 0; i < maxIteration; i++)
             {
-                if (i < listviewLeft.Items.Count)
+                if (i < listviewLeft.Items.Count) //out of bounds protection
                 {
                     ChangeListItemColour(listviewLeft, i, "white");
                 }
 
-                if (i < listviewRight.Items.Count)
+                if (i < listviewRight.Items.Count) //out of bounds protection
                 {
                     ChangeListItemColour(listviewRight, i, "white");
                 }
             }
         }
 
+        //Makes the ListViews and the DataGridViews empty
         public void ClearData(ListView listview, DataGridView datagridview, Database database)
         {
             database.EmptyDatabase(); //clear the data

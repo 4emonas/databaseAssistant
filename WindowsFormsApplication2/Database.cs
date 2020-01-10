@@ -46,6 +46,7 @@ namespace WindowsFormsApplication2
             return tables[0];
         }
 
+        //Empties the database object stored data
         public void EmptyDatabase()
         {
             this.tables.Clear();
