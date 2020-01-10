@@ -144,6 +144,10 @@ namespace WindowsFormsApplication2
             {
                 listView.Items[tableIndex].BackColor = System.Drawing.Color.White;
             }
+            else if (colour == "pink")
+            {
+                listView.Items[tableIndex].BackColor = System.Drawing.Color.Pink;
+            }
             
         }
 
