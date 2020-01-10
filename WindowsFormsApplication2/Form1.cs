@@ -83,6 +83,8 @@ namespace WindowsFormsApplication2
 
             if (connDb1.State == ConnectionState.Open)
             {
+                visio.ClearData(listView1, dataGridView1, Database1);
+
                 Database1.InitialiseDatabase(connDb1);
                 openDbButton1.Text = "Opened";
                 openDbButton1.ForeColor = Color.FromArgb(50, 200, 50);
@@ -122,9 +124,12 @@ namespace WindowsFormsApplication2
 
             if (connDb2.State == ConnectionState.Open)
             {
+                visio.ClearData(listView2, dataGridView1, Database2);
+
                 Database2.InitialiseDatabase(connDb2);
                 openDbButton2.Text = "Opened";
                 openDbButton2.ForeColor = Color.FromArgb(50, 200, 50);
+
                 visio.ShowTables(listView2, Database2);
             }
         }

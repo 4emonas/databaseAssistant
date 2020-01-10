@@ -47,6 +47,50 @@ namespace WindowsFormsApplication2
         public void CompareDatabases(Database dbLeft,Database dbRight)
         {
 
+        public void ClearData(ListView listview, DataGridView datagridview, Database database)
+        {
+            database.EmptyDatabase(); //clear the data
+
+            ClearListData(listview);
+            ClearDatagridData(datagridview);
+        }
+
+        private void ClearListData(ListView listview)
+        {
+            listview.Clear();
+            listview.Items.Clear();
+            listview.Update(); // In case there is databinding
+            listview.Refresh(); // Redraw items
+        }
+
+        private void ClearDatagridData(DataGridView dataGridView)
+        {
+            dataGridView.DataSource = null;
+            dataGridView.Rows.Clear();
+            dataGridView.Update(); // In case there is databinding
+            dataGridView.Refresh(); // Redraw items
+        public void ClearData(ListView listview, DataGridView datagridview, Database database)
+        {
+            database.EmptyDatabase(); //clear the data
+
+            ClearListData(listview);
+            ClearDatagridData(datagridview);
+        }
+
+        private void ClearListData(ListView listview)
+        {
+            listview.Clear();
+            listview.Items.Clear();
+            listview.Update(); // In case there is databinding
+            listview.Refresh(); // Redraw items
+        }
+
+        private void ClearDatagridData(DataGridView dataGridView)
+        {
+            dataGridView.DataSource = null;
+            dataGridView.Rows.Clear();
+            dataGridView.Update(); // In case there is databinding
+            dataGridView.Refresh(); // Redraw items
         }
     }
 }
