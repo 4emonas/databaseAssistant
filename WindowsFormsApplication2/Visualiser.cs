@@ -202,6 +202,31 @@ namespace WindowsFormsApplication2
             }
         }
 
+        //shows the differences that exist between the tables
+        public void ShowTableDifferences(string tableName, DataGridView dgvLeft, Database dbLeft, Database dbRight)
+        {
+            int tableLeftRecordNumbers = dbLeft.getTableObject(tableName).GetTableRecordNumbers();
+            int tableRightRecordNumbers = dbRight.getTableObject(tableName).GetTableRecordNumbers();
+
+            if (tableLeftRecordNumbers > tableRightRecordNumbers)
+            {
+                for (int i = tableRightRecordNumbers; i < (tableLeftRecordNumbers - tableRightRecordNumbers); i++)
+                {
+                    //TODO: get primary key and highlight it
+                    int primarykeyY = 4;
+                    HighlightDataGridViewCell(dgvLeft, i, primarykeyY, "red");
+                }
+            }
+        }
+
+        private void HighlightDataGridViewCell(DataGridView dgv, int x, int y, string colour)
+        {
+            if (colour == "red")
+            {
+                dgv.Rows[x].Cells[y].Style.BackColor = System.Drawing.Color.Red;
+            }
+        }
+
         //Makes the ListViews and the DataGridViews empty
         public void ClearData(ListView listview, DataGridView datagridview, Database database)
         {
