@@ -62,8 +62,38 @@ namespace WindowsFormsApplication2
 
             ShowTablesWithFieldDifferences(dbLeft, dbRight, commonTables, listViewLeft, listViewRight);
             ShowDifferentTables(dbLeft, dbRight, commonTables, listViewLeft, listViewRight);
-            
+            ShowTablesWithRecordsDifferences(dbLeft, dbRight, commonTables, listViewLeft, listViewRight);
 
+        }
+
+        //flags the tables that have got differences with record numbers
+        private void ShowTablesWithRecordsDifferences(Database dbLeft, Database dbRight, List<string> commonTables, ListView listViewLeft, ListView listViewRight)
+        {
+            for (int i = 0; i < commonTables.Count; i++)
+            {
+                if (dbLeft.getTableObject(commonTables[i]).GetTableRecordNumbers() != dbRight.getTableObject(commonTables[i]).GetTableRecordNumbers())
+                {// if they dont have the same record numbers
+
+                    for (int j = 0; j < listViewLeft.Items.Count; j++)
+                    {//find the table with this specific name in the list
+                        if (listViewLeft.Items[j].Text == commonTables[i])
+                        {//find the table with this specific name in the list
+                            ChangeListItemColour(listViewLeft, j, "blue");
+                            break;
+                        }
+                    }
+
+                    for (int j = 0; j < listViewRight.Items.Count; j++)
+                    {//find the table with this specific name in the list
+                        if (listViewRight.Items[j].Text == commonTables[i])
+                        {//find the table with this specific name in the list
+                            ChangeListItemColour(listViewRight, j, "blue");
+                            break;
+                        }
+                    }
+
+                }
+            }
         }
 
         //flags the tables that are not common between the databases
