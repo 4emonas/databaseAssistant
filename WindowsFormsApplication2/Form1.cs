@@ -19,7 +19,7 @@ namespace WindowsFormsApplication2
         Database Database1 = new Database();
         Database Database2 = new Database();
         Visualiser visio = new Visualiser();
-        
+
         public Form1()
         {
             InitializeComponent();
@@ -129,7 +129,7 @@ namespace WindowsFormsApplication2
                 Database2.InitialiseDatabase(connDb2);
                 openDbButton2.Text = "Opened";
                 openDbButton2.ForeColor = Color.FromArgb(50, 200, 50);
-
+                                
                 visio.ShowTables(listView2, Database2);
             }
         }
@@ -170,7 +170,7 @@ namespace WindowsFormsApplication2
         //needs to be done TODO
         private short CompareDatabases() //keeping this function for testing
         {
-            visio.ShowTableData(Database1.tables[1], dataGridView1, connDb1);
+            visio.CompareDatabases(Database1, Database2,listView1,listView2);
            
                 return 0;
         }
@@ -196,18 +196,6 @@ namespace WindowsFormsApplication2
 
             errorString += "not open";
             MessageBox.Show(errorString);
-        }
-        private void compareToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (connDb1.State == ConnectionState.Open && connDb2.State == ConnectionState.Open)
-            {
-                CompareDatabases();
-            }
-            else
-            {
-                ShowNoOpenDatabasesErrorMessage();
-            }
-
         }
 
         private void database1ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -250,6 +238,19 @@ namespace WindowsFormsApplication2
         private void listView2_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
         {
             visio.ShowTableData(Database2.getTableObject(e.Item.Text), dataGridView2, connDb2);
+        }
+
+        private void compareDatabasesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (connDb1.State == ConnectionState.Open && connDb2.State == ConnectionState.Open)
+            {
+                CompareDatabases();
+            }
+            else
+            {
+                ShowNoOpenDatabasesErrorMessage();
+            }
+
         }
     }
 }

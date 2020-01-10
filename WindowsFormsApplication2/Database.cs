@@ -45,5 +45,10 @@ namespace WindowsFormsApplication2
             }
             return tables[0];
         }
+
+        public void EmptyDatabase()
+        {
+            this.tables.Clear();
+        }
     }
 }

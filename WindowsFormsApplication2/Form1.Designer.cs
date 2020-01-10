@@ -33,7 +33,6 @@
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.databasesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.compareToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.database1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.database2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -41,6 +40,7 @@
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.manualToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contactUsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.compareDatabasesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.labelDatabasePath1 = new System.Windows.Forms.Label();
             this.openDbButton1 = new System.Windows.Forms.Button();
@@ -78,7 +78,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 41F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(671, 365);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(670, 444);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // menuStrip1
@@ -88,11 +88,12 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.databasesToolStripMenuItem,
-            this.helpToolStripMenuItem});
+            this.helpToolStripMenuItem,
+            this.compareDatabasesToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(671, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(670, 28);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -114,20 +115,11 @@
             // databasesToolStripMenuItem
             // 
             this.databasesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.compareToolStripMenuItem,
             this.closeToolStripMenuItem,
             this.searchToolStripMenuItem});
             this.databasesToolStripMenuItem.Name = "databasesToolStripMenuItem";
             this.databasesToolStripMenuItem.Size = new System.Drawing.Size(72, 24);
             this.databasesToolStripMenuItem.Text = "Databases";
-            // 
-            // compareToolStripMenuItem
-            // 
-            this.compareToolStripMenuItem.Name = "compareToolStripMenuItem";
-            this.compareToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F5;
-            this.compareToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
-            this.compareToolStripMenuItem.Text = "Compare";
-            this.compareToolStripMenuItem.Click += new System.EventHandler(this.compareToolStripMenuItem_Click);
             // 
             // closeToolStripMenuItem
             // 
@@ -135,7 +127,7 @@
             this.database1ToolStripMenuItem,
             this.database2ToolStripMenuItem});
             this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
-            this.closeToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.closeToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
             this.closeToolStripMenuItem.Text = "Close";
             // 
             // database1ToolStripMenuItem
@@ -155,7 +147,7 @@
             // searchToolStripMenuItem
             // 
             this.searchToolStripMenuItem.Name = "searchToolStripMenuItem";
-            this.searchToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.searchToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
             this.searchToolStripMenuItem.Text = "Search";
             this.searchToolStripMenuItem.Click += new System.EventHandler(this.searchToolStripMenuItem_Click);
             // 
@@ -181,6 +173,13 @@
             this.contactUsToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.contactUsToolStripMenuItem.Text = "Contact Us";
             // 
+            // compareDatabasesToolStripMenuItem
+            // 
+            this.compareDatabasesToolStripMenuItem.Name = "compareDatabasesToolStripMenuItem";
+            this.compareDatabasesToolStripMenuItem.Size = new System.Drawing.Size(124, 24);
+            this.compareDatabasesToolStripMenuItem.Text = "Compare Databases";
+            this.compareDatabasesToolStripMenuItem.Click += new System.EventHandler(this.compareDatabasesToolStripMenuItem_Click);
+            // 
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.ColumnCount = 6;
@@ -202,7 +201,7 @@
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(667, 37);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(666, 37);
             this.tableLayoutPanel2.TabIndex = 1;
             // 
             // labelDatabasePath1
@@ -245,7 +244,7 @@
             this.openDbButton2.Location = new System.Drawing.Point(599, 2);
             this.openDbButton2.Margin = new System.Windows.Forms.Padding(2);
             this.openDbButton2.Name = "openDbButton2";
-            this.openDbButton2.Size = new System.Drawing.Size(66, 33);
+            this.openDbButton2.Size = new System.Drawing.Size(65, 33);
             this.openDbButton2.TabIndex = 5;
             this.openDbButton2.Text = "Browse";
             this.openDbButton2.UseVisualStyleBackColor = true;
@@ -286,7 +285,7 @@
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(667, 292);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(666, 371);
             this.tableLayoutPanel3.TabIndex = 2;
             // 
             // dataGridView2
@@ -298,7 +297,7 @@
             this.dataGridView2.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowTemplate.Height = 24;
-            this.dataGridView2.Size = new System.Drawing.Size(265, 288);
+            this.dataGridView2.Size = new System.Drawing.Size(264, 367);
             this.dataGridView2.TabIndex = 1;
             // 
             // dataGridView1
@@ -310,7 +309,7 @@
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(262, 288);
+            this.dataGridView1.Size = new System.Drawing.Size(262, 367);
             this.dataGridView1.TabIndex = 0;
             // 
             // listView1
@@ -319,7 +318,7 @@
             this.listView1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listView1.Location = new System.Drawing.Point(3, 3);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(60, 286);
+            this.listView1.Size = new System.Drawing.Size(60, 365);
             this.listView1.TabIndex = 2;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.ColumnWidthChanging += new System.Windows.Forms.ColumnWidthChangingEventHandler(this.listView1_ColumnWidthChanging);
@@ -330,7 +329,7 @@
             this.listView2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listView2.Location = new System.Drawing.Point(335, 3);
             this.listView2.Name = "listView2";
-            this.listView2.Size = new System.Drawing.Size(60, 286);
+            this.listView2.Size = new System.Drawing.Size(60, 365);
             this.listView2.TabIndex = 3;
             this.listView2.UseCompatibleStateImageBehavior = false;
             this.listView2.ColumnWidthChanging += new System.Windows.Forms.ColumnWidthChangingEventHandler(this.listView2_ColumnWidthChanging);
@@ -348,7 +347,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(671, 365);
+            this.ClientSize = new System.Drawing.Size(670, 444);
             this.Controls.Add(this.tableLayoutPanel1);
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(2);
@@ -386,7 +385,6 @@
         private System.Windows.Forms.OpenFileDialog openFileDialogDatabase1;
         private System.Windows.Forms.OpenFileDialog openFileDialogDatabase2;
         private System.Windows.Forms.ToolStripMenuItem databasesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem compareToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem searchToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem manualToolStripMenuItem;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
@@ -395,8 +393,9 @@
         private System.Windows.Forms.ToolStripMenuItem database1ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem database2ToolStripMenuItem;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.ListView listView1;
-        private System.Windows.Forms.ListView listView2;
+        private System.Windows.Forms.ToolStripMenuItem compareDatabasesToolStripMenuItem;
+        protected System.Windows.Forms.ListView listView2;
+        internal System.Windows.Forms.ListView listView1;
     }
 }
 

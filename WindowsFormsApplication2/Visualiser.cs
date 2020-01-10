@@ -1,13 +1,14 @@
-﻿using System.Data;
+﻿using System.Collections.Generic;
+using System.Data;
 using System.Data.OleDb;
 using System.Windows.Forms;
 
-namespace WindowsFormsApplication2
+namespace WindowsFormsApplication2 
 {
 
     class Visualiser
     {
-
+        
         public Visualiser()
         {
 
@@ -44,31 +45,56 @@ namespace WindowsFormsApplication2
             }
         }
 
-        public void CompareDatabases(Database dbLeft,Database dbRight)
+        public void CompareDatabases(Database dbLeft,Database dbRight, ListView listViewLeft, ListView listViewRight)
         {
-
-        public void ClearData(ListView listview, DataGridView datagridview, Database database)
-        {
-            database.EmptyDatabase(); //clear the data
-
-            ClearListData(listview);
-            ClearDatagridData(datagridview);
+            List<string> commonTables = new List<string>();
+            
+            for (int tableCount = 0; tableCount<dbLeft.tables.Count; tableCount++)
+            {// go through all the tables on the first database
+                for(int i = 0; i < dbRight.tables.Count; i++)
+                {//and check if a table on the left, exists on the right
+                    if(dbLeft.tables[tableCount].tableName == dbRight.tables[i].tableName)
+                    {//found same tables
+                        commonTables.Add(dbLeft.tables[tableCount].tableName);
+                        break;
+                    }
+                }
+            }
+            
+            ShowDifferentTables(dbLeft, dbRight, commonTables, listViewLeft, listViewRight);
         }
 
-        private void ClearListData(ListView listview)
+        private void ShowDifferentTables(Database dbLeft, Database dbRight, List<string> commonTables, ListView listViewLeft, ListView listViewRight) 
         {
-            listview.Clear();
-            listview.Items.Clear();
-            listview.Update(); // In case there is databinding
-            listview.Refresh(); // Redraw items
+            int maxItteration = 0;
+
+            maxItteration = (dbLeft.tables.Count >= dbRight.tables.Count) ? dbLeft.tables.Count : dbRight.tables.Count;
+
+            for (int i = 0; i < maxItteration; i++)
+            {
+                if (i < dbLeft.tables.Count)
+                {
+                    if (!commonTables.Contains(dbLeft.tables[i].tableName))
+                    {
+                        ChangeListItemColour(listViewLeft, i);
+                    }
+                }
+
+                if (i < dbRight.tables.Count)
+                {
+                    if (!commonTables.Contains(dbRight.tables[i].tableName))
+                    {
+                        ChangeListItemColour(listViewRight, i);
+                    }
+                }                
+            }
         }
 
-        private void ClearDatagridData(DataGridView dataGridView)
+        private void ChangeListItemColour(ListView listView, int tableIndex)
         {
-            dataGridView.DataSource = null;
-            dataGridView.Rows.Clear();
-            dataGridView.Update(); // In case there is databinding
-            dataGridView.Refresh(); // Redraw items
+            listView.Items[tableIndex].BackColor = System.Drawing.Color.Green;
+        }
+
         public void ClearData(ListView listview, DataGridView datagridview, Database database)
         {
             database.EmptyDatabase(); //clear the data
