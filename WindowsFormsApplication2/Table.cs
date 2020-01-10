@@ -14,8 +14,12 @@ namespace WindowsFormsApplication2
         public string tableName;
         private List<List<string>> tableData = new List<List<string>>();
 
+        public List<List<string>> GetTableData(){ return tableData;}
+
         //private variables
         private List<string> fields = new List<string>(); //the field names of the table
+        public List<string> GetFields(){ return fields;}
+
         private int tableRecordNumbers; //number of records each table has
 
         //========== public functions ============//
