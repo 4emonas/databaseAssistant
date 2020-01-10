@@ -19,7 +19,6 @@ namespace WindowsFormsApplication2
 
         private void ReadInDatabaseTables(OleDbConnection conn) //finds the list of tables and initialises each of them
         {
-
             string[] restrictions = new string[4];
             restrictions[3] = "Table";
             DataTable userTables = null;

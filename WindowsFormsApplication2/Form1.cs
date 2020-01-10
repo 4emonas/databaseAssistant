@@ -242,7 +242,7 @@ namespace WindowsFormsApplication2
 
         private void compareDatabasesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            visio.ResetComparison(listView1, listView2);
+            visio.ResetComparisonColours(listView1, listView2);
 
             if (connDb1.State == ConnectionState.Open && connDb2.State == ConnectionState.Open)
             {

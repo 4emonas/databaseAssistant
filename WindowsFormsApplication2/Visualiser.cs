@@ -148,6 +148,7 @@ namespace WindowsFormsApplication2
         }
 
         //resets the background colours in the lists
+        public void ResetComparisonColours(ListView listviewLeft, ListView listviewRight)
         {
             int maxIteration = 0;
 
