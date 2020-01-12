@@ -183,27 +183,39 @@ namespace WindowsFormsApplication2
         }
 
         //shows the differences that exist between the tables
-        public void ShowTableDifferences(string tableName, DataGridView dgvLeft, Database dbLeft, Database dbRight)
+        public void ShowTableDifferences(string tableName, DataGridView dgvLeft, DataGridView dgvRight, Database dbLeft, Database dbRight)
         {
             int tableLeftRecordNumbers = dbLeft.getTableObject(tableName).GetTableRecordNumbers();
             int tableRightRecordNumbers = dbRight.getTableObject(tableName).GetTableRecordNumbers();
 
             if (tableLeftRecordNumbers > tableRightRecordNumbers)
             {
-                for (int i = tableRightRecordNumbers; i < (tableLeftRecordNumbers - tableRightRecordNumbers); i++)
+                for (int i = tableRightRecordNumbers; i < tableRightRecordNumbers + (tableLeftRecordNumbers - tableRightRecordNumbers); i++)
                 {
-                    //TODO: get primary key and highlight it
-                    int primarykeyY = 4;
-                    HighlightDataGridViewCell(dgvLeft, i, primarykeyY, "red");
+                    HighlightDataGridViewRow(dgvLeft, i, "yellow");
+                }
+            }
+            else if (tableRightRecordNumbers > tableLeftRecordNumbers)
+            {
+                for (int i = tableLeftRecordNumbers; i < tableLeftRecordNumbers + (tableRightRecordNumbers - tableLeftRecordNumbers); i++)
+                {
+                    HighlightDataGridViewRow(dgvRight, i, "yellow");
                 }
             }
         }
 
-        private void HighlightDataGridViewCell(DataGridView dgv, int x, int y, string colour)
+        private void HighlightDataGridViewRow(DataGridView dgv, int x, string colour)
         {
-            if (colour == "red")
+            try
+            {//error handling in case of a dummy table
+                for (int j = 0; j < dgv.Rows[x].Cells.Count; j++)
+                {
+                    dgv.Rows[x].Cells[j].Style.BackColor = ColourPicker(colour);
+                }
+            }
+            catch (System.ArgumentOutOfRangeException)
             {
-                dgv.Rows[x].Cells[y].Style.BackColor = System.Drawing.Color.Red;
+                return;
             }
         }
 
