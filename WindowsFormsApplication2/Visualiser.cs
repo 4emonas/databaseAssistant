@@ -158,27 +158,7 @@ namespace WindowsFormsApplication2
         //changes the background colour of the tables list
         private void ChangeListItemColour(ListView listView, int tableIndex, string colour)
         {
-            if (colour == "red")
-            {
-                listView.Items[tableIndex].BackColor = System.Drawing.Color.Red;
-            }
-            else if (colour == "green")
-            {
-                listView.Items[tableIndex].BackColor = System.Drawing.Color.Green;
-            }
-            else if (colour == "blue")
-            {
-                listView.Items[tableIndex].BackColor = System.Drawing.Color.Teal;
-            }
-            else if (colour == "white")
-            {
-                listView.Items[tableIndex].BackColor = System.Drawing.Color.White;
-            }
-            else if (colour == "pink")
-            {
-                listView.Items[tableIndex].BackColor = System.Drawing.Color.Pink;
-            }
-            
+            listView.Items[tableIndex].BackColor  = ColourPicker(colour);
         }
 
         //resets the background colours in the lists
@@ -227,6 +207,11 @@ namespace WindowsFormsApplication2
             }
         }
 
+        private void HighlightDataGridViewCell(DataGridView dgv, int x, int y, string colour)
+        {
+            dgv.Rows[x].Cells[y].Style.BackColor = ColourPicker(colour);
+        }
+
         //Makes the ListViews and the DataGridViews empty
         public void ClearData(ListView listview, DataGridView datagridview, Database database)
         {
@@ -250,6 +235,38 @@ namespace WindowsFormsApplication2
             dataGridView.Rows.Clear();
             dataGridView.Update(); // In case there is databinding
             dataGridView.Refresh(); // Redraw items
+        }
+
+        private System.Drawing.Color ColourPicker(string colour)
+        {
+            if (colour == "red")
+            {
+                return System.Drawing.Color.Red;
+            }
+            else if (colour == "green")
+            {
+                return System.Drawing.Color.Green;
+            }
+            else if (colour == "blue")
+            {
+                return System.Drawing.Color.Teal;
+            }
+            else if (colour == "white")
+            {
+                return System.Drawing.Color.White;
+            }
+            else if (colour == "pink")
+            {
+                return System.Drawing.Color.Pink;
+            }
+            if (colour == "yellow")
+            {
+                return System.Drawing.Color.Yellow;
+            }
+            else
+            {
+                return System.Drawing.Color.White;
+            }
         }
     }
 }
