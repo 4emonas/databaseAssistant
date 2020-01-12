@@ -235,6 +235,7 @@ namespace WindowsFormsApplication2
             if (e.IsSelected)
             {//show only the clicked one
                 visio.ShowTableData(Database1.getTableObject(e.Item.Text), dataGridView1, connDb1);
+                dataGridView1.Refresh();
                 dataGridView1.Sort(dataGridView1.Columns[0], ListSortDirection.Ascending);
 
                 if ((e.Item.BackColor != Color.White) && (e.Item.BackColor != Color.Red))
@@ -249,6 +250,7 @@ namespace WindowsFormsApplication2
             if (e.IsSelected)
             {//show the clicked one
                 visio.ShowTableData(Database2.getTableObject(e.Item.Text), dataGridView2, connDb2);
+                dataGridView2.Refresh();
                 dataGridView2.Sort(dataGridView2.Columns[0], ListSortDirection.Ascending);
 
                 if ((e.Item.BackColor != Color.White) && (e.Item.BackColor != Color.Red))

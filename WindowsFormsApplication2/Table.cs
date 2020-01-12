@@ -19,6 +19,7 @@ namespace WindowsFormsApplication2
         //private variables
         private List<string> fields = new List<string>(); //the field names of the table
         public List<string> GetFields(){ return fields;}
+        public int GetFieldsNumber() { return fields.Count; }
 
         private int tableRecordNumbers; //number of records each table has
         public int GetTableRecordNumbers() { return tableRecordNumbers; }

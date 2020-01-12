@@ -185,6 +185,49 @@ namespace WindowsFormsApplication2
         //shows the differences that exist between the tables
         public void ShowTableDifferences(string tableName, DataGridView dgvLeft, DataGridView dgvRight, Database dbLeft, Database dbRight)
         {
+            ShowExtraRowsInTable(tableName, dgvLeft, dgvRight, dbLeft, dbRight);
+            ShowExtraColumnsInTable(tableName, dgvLeft, dgvRight, dbLeft, dbRight);
+        }
+
+        private void ShowExtraColumnsInTable(string tableName, DataGridView dgvLeft, DataGridView dgvRight, Database dbLeft, Database dbRight)
+        {
+            int tableLeftColumnNumbers = dbLeft.getTableObject(tableName).GetFieldsNumber();
+            int tableRightColumnNumbers = dbRight.getTableObject(tableName).GetFieldsNumber();
+
+            if (tableLeftColumnNumbers > tableRightColumnNumbers)
+            {
+                for (int i = tableRightColumnNumbers; i < tableRightColumnNumbers + (tableLeftColumnNumbers - tableRightColumnNumbers); i++)
+                {
+                    HighlightDataGridViewColumn(dgvLeft, i, "orange");
+                }
+            }
+            else if (tableRightColumnNumbers > tableLeftColumnNumbers)
+            {
+                for (int i = tableLeftColumnNumbers; i < tableLeftColumnNumbers + (tableRightColumnNumbers - tableLeftColumnNumbers); i++)
+                {
+                    HighlightDataGridViewColumn(dgvRight, i, "orange");
+                }
+            }
+        }
+        //Highlights the extra columns
+        private void HighlightDataGridViewColumn(DataGridView dgv, int y, string colour)
+        {
+            try
+            {//error handling in case of a dummy table
+                for (int i = 0; i < dgv.Rows.Count; i++)
+                {
+                    dgv.Rows[i].Cells[y].Style.BackColor = ColourPicker(colour);
+                }
+            }
+            catch (System.ArgumentOutOfRangeException)
+            {
+                return;
+            }
+        }
+
+
+        private void ShowExtraRowsInTable(string tableName, DataGridView dgvLeft, DataGridView dgvRight, Database dbLeft, Database dbRight)
+        {
             int tableLeftRecordNumbers = dbLeft.getTableObject(tableName).GetTableRecordNumbers();
             int tableRightRecordNumbers = dbRight.getTableObject(tableName).GetTableRecordNumbers();
 
@@ -203,7 +246,7 @@ namespace WindowsFormsApplication2
                 }
             }
         }
-
+        
         private void HighlightDataGridViewRow(DataGridView dgv, int x, string colour)
         {
             try
@@ -271,9 +314,13 @@ namespace WindowsFormsApplication2
             {
                 return System.Drawing.Color.Pink;
             }
-            if (colour == "yellow")
+            else if (colour == "yellow")
             {
                 return System.Drawing.Color.Yellow;
+            }
+            else if (colour == "orange")
+            {
+                return System.Drawing.Color.Orange;
             }
             else
             {
