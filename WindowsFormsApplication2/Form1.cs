@@ -232,23 +232,30 @@ namespace WindowsFormsApplication2
 
         private void listView1_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
         {
-            visio.ShowTableData(Database1.getTableObject(e.Item.Text), dataGridView1, connDb1);
+            if (e.IsSelected)
+            {//show only the clicked one
+                visio.ShowTableData(Database1.getTableObject(e.Item.Text), dataGridView1, connDb1);
+                dataGridView1.Sort(dataGridView1.Columns[0], ListSortDirection.Ascending);
 
-            if ((e.Item.BackColor != Color.White)&&(e.Item.BackColor != Color.Red))
-            {
-                visio.ShowTableDifferences(e.Item.Text, dataGridView1, Database1, Database2);
+                if ((e.Item.BackColor != Color.White) && (e.Item.BackColor != Color.Red))
+                {
+                    visio.ShowTableDifferences(e.Item.Text, dataGridView1, dataGridView2, Database1, Database2);
+                }
             }
-
         }
 
         private void listView2_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
         {
-            visio.ShowTableData(Database2.getTableObject(e.Item.Text), dataGridView2, connDb2);
+            if (e.IsSelected)
+            {//show the clicked one
+                visio.ShowTableData(Database2.getTableObject(e.Item.Text), dataGridView2, connDb2);
+                dataGridView2.Sort(dataGridView2.Columns[0], ListSortDirection.Ascending);
 
-            if ((e.Item.BackColor != Color.White) && (e.Item.BackColor != Color.Red))
-            {
-                visio.ShowTableDifferences(e.Item.Text, dataGridView2, Database1, Database2);
-            }
+                if ((e.Item.BackColor != Color.White) && (e.Item.BackColor != Color.Red))
+                {
+                    visio.ShowTableDifferences(e.Item.Text, dataGridView1, dataGridView2, Database1, Database2);
+                }
+            }           
         }
 
         private void compareDatabasesToolStripMenuItem_Click(object sender, EventArgs e)
