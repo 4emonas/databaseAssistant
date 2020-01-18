@@ -20,6 +20,8 @@ namespace WindowsFormsApplication2
         Database Database2 = new Database();
         Visualiser visio = new Visualiser();
 
+        bool toCompare = false; //flag that shows if comparison is on or off
+
         public Form1()
         {
             InitializeComponent();
@@ -159,7 +161,6 @@ namespace WindowsFormsApplication2
                 var nameCol = table.Columns["ColumnName"];
                 foreach (DataRow row in table.Rows)
                 {
-                    //Console.WriteLine(row[nameCol]);
                     db1ColumnList.Add(row[nameCol].ToString());
                 }
             }
@@ -238,7 +239,7 @@ namespace WindowsFormsApplication2
                 dataGridView1.Refresh();
                 dataGridView1.Sort(dataGridView1.Columns[0], ListSortDirection.Ascending);
 
-                if ((e.Item.BackColor != Color.White) && (e.Item.BackColor != Color.Red))
+                if ((e.Item.BackColor != Color.White) && (e.Item.BackColor != Color.Red) && toCompare)
                 {
                     visio.ShowTableDifferences(e.Item.Text, dataGridView1, dataGridView2, Database1, Database2);
                 }
@@ -253,7 +254,7 @@ namespace WindowsFormsApplication2
                 dataGridView2.Refresh();
                 dataGridView2.Sort(dataGridView2.Columns[0], ListSortDirection.Ascending);
 
-                if ((e.Item.BackColor != Color.White) && (e.Item.BackColor != Color.Red))
+                if (((e.Item.BackColor != Color.White) && (e.Item.BackColor != Color.Red)) && toCompare)
                 {
                     visio.ShowTableDifferences(e.Item.Text, dataGridView1, dataGridView2, Database1, Database2);
                 }
@@ -266,10 +267,12 @@ namespace WindowsFormsApplication2
 
             if (connDb1.State == ConnectionState.Open && connDb2.State == ConnectionState.Open)
             {
+                toCompare = true;
                 CompareDatabases();
             }
             else
             {
+                toCompare = false;
                 ShowNoOpenDatabasesErrorMessage();
             }
 
