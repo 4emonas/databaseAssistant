@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Common;
 using System.Data.OleDb;
 using System.Linq;
 using System.Text;
@@ -11,18 +12,22 @@ namespace WindowsFormsApplication2
     class Table : Database
     {
         //public variables
+        public string primaryKey;
         public string tableName;
         private List<List<string>> tableData = new List<List<string>>();
 
         public List<List<string>> GetTableData(){ return tableData;}
+        public List<string> GetFields() { return fields; }
+        public int GetFieldsNumber() { return fields.Count; }
+        public int GetTableRecordNumbers() { return tableRecordNumbers; }
 
         //private variables
         private List<string> fields = new List<string>(); //the field names of the table
-        public List<string> GetFields(){ return fields;}
-        public int GetFieldsNumber() { return fields.Count; }
+        
 
         private int tableRecordNumbers; //number of records each table has
-        public int GetTableRecordNumbers() { return tableRecordNumbers; }
+       
+
 
         //========== public functions ============//
 
@@ -44,8 +49,6 @@ namespace WindowsFormsApplication2
             ReadInTableData(conn);      //get the table data
         }
 
-
-
         //========== private functions ===========//
 
         //gets the number of records in each table
@@ -60,8 +63,10 @@ namespace WindowsFormsApplication2
         {
             OleDbCommand cmd = new OleDbCommand("select * from [" + tableName + "]", conn);
             OleDbDataReader reader = cmd.ExecuteReader(CommandBehavior.SchemaOnly);
+                
             {
                 DataTable table = reader.GetSchemaTable();
+
                 var nameCol = table.Columns["ColumnName"];
                 foreach (DataRow row in table.Rows)
                 {
