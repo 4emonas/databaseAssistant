@@ -19,7 +19,9 @@ namespace WindowsFormsApplication2
         Database Database1 = new Database();
         Database Database2 = new Database();
         Visualiser visio = new Visualiser();
-        
+
+        bool toCompare = false; //flag that shows if comparison is on or off
+
         public Form1()
         {
             InitializeComponent();
@@ -83,6 +85,8 @@ namespace WindowsFormsApplication2
 
             if (connDb1.State == ConnectionState.Open)
             {
+                visio.ClearData(listView1, dataGridView1, Database1);
+
                 Database1.InitialiseDatabase(connDb1);
                 openDbButton1.Text = "Opened";
                 openDbButton1.ForeColor = Color.FromArgb(50, 200, 50);
@@ -122,9 +126,12 @@ namespace WindowsFormsApplication2
 
             if (connDb2.State == ConnectionState.Open)
             {
+                visio.ClearData(listView2, dataGridView1, Database2);
+
                 Database2.InitialiseDatabase(connDb2);
                 openDbButton2.Text = "Opened";
                 openDbButton2.ForeColor = Color.FromArgb(50, 200, 50);
+                                
                 visio.ShowTables(listView2, Database2);
             }
         }
@@ -154,7 +161,6 @@ namespace WindowsFormsApplication2
                 var nameCol = table.Columns["ColumnName"];
                 foreach (DataRow row in table.Rows)
                 {
-                    //Console.WriteLine(row[nameCol]);
                     db1ColumnList.Add(row[nameCol].ToString());
                 }
             }
@@ -165,7 +171,7 @@ namespace WindowsFormsApplication2
         //needs to be done TODO
         private short CompareDatabases() //keeping this function for testing
         {
-            visio.ShowTableData(Database1.tables[1], dataGridView1, connDb1);
+            visio.CompareDatabases(Database1, Database2,listView1,listView2);
            
                 return 0;
         }
@@ -191,18 +197,6 @@ namespace WindowsFormsApplication2
 
             errorString += "not open";
             MessageBox.Show(errorString);
-        }
-        private void compareToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (connDb1.State == ConnectionState.Open && connDb2.State == ConnectionState.Open)
-            {
-                CompareDatabases();
-            }
-            else
-            {
-                ShowNoOpenDatabasesErrorMessage();
-            }
-
         }
 
         private void database1ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -239,12 +233,49 @@ namespace WindowsFormsApplication2
 
         private void listView1_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
         {
-            visio.ShowTableData(Database1.getTableObject(e.Item.Text), dataGridView1, connDb1);
+            if (e.IsSelected)
+            {//show only the clicked one
+                visio.ShowTableData(Database1.getTableObject(e.Item.Text), dataGridView1, connDb1);
+                dataGridView1.Refresh();
+                dataGridView1.Sort(dataGridView1.Columns[0], ListSortDirection.Ascending);
+
+                if ((e.Item.BackColor != Color.White) && (e.Item.BackColor != Color.Red) && toCompare)
+                {
+                    visio.ShowTableDifferences(e.Item.Text, dataGridView1, dataGridView2, Database1, Database2);
+                }
+            }
         }
 
         private void listView2_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
         {
-            visio.ShowTableData(Database2.getTableObject(e.Item.Text), dataGridView2, connDb2);
+            if (e.IsSelected)
+            {//show the clicked one
+                visio.ShowTableData(Database2.getTableObject(e.Item.Text), dataGridView2, connDb2);
+                dataGridView2.Refresh();
+                dataGridView2.Sort(dataGridView2.Columns[0], ListSortDirection.Ascending);
+
+                if (((e.Item.BackColor != Color.White) && (e.Item.BackColor != Color.Red)) && toCompare)
+                {
+                    visio.ShowTableDifferences(e.Item.Text, dataGridView1, dataGridView2, Database1, Database2);
+                }
+            }           
+        }
+
+        private void compareDatabasesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            visio.ResetComparisonColours(listView1, listView2);
+
+            if (connDb1.State == ConnectionState.Open && connDb2.State == ConnectionState.Open)
+            {
+                toCompare = true;
+                CompareDatabases();
+            }
+            else
+            {
+                toCompare = false;
+                ShowNoOpenDatabasesErrorMessage();
+            }
+
         }
     }
 }

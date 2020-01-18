@@ -19,7 +19,6 @@ namespace WindowsFormsApplication2
 
         private void ReadInDatabaseTables(OleDbConnection conn) //finds the list of tables and initialises each of them
         {
-
             string[] restrictions = new string[4];
             restrictions[3] = "Table";
             DataTable userTables = null;
@@ -44,6 +43,12 @@ namespace WindowsFormsApplication2
                 }
             }
             return tables[0];
+        }
+
+        //Empties the database object stored data
+        public void EmptyDatabase()
+        {
+            this.tables.Clear();
         }
     }
 }
