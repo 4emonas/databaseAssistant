@@ -1,0 +1,3 @@
+1. duplicate code on Form1 database loading needs to become funcion
+2. some speed optimization on databases loading
+3. window names on error messages windows
