@@ -64,8 +64,8 @@ namespace WindowsFormsApplication2
                     databasePath1.Text = openFileDialogDatabase1.FileName;
                 }
             }
-
-            String conn_string = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + databasePath1.Text + ";Persist Security Info=False";
+            string databasePath = databasePath1.Text;
+            String conn_string = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + databasePath + ";Persist Security Info=False";
             try
             {
                 connDb1 = new OleDbConnection(conn_string);
@@ -78,7 +78,7 @@ namespace WindowsFormsApplication2
                 if (databasePath1.Text == "")
                     errorMsg = "Please provide database path";
                 else
-                    errorMsg = "Unable to open the database in path " + databasePath1.Text;
+                    errorMsg = "Unable to open the database in path " + databasePath;
 
                 MessageBox.Show(errorMsg);
             }
@@ -86,12 +86,18 @@ namespace WindowsFormsApplication2
             if (connDb1.State == ConnectionState.Open)
             {
                 visio.ClearData(listView1, dataGridView1, Database1);
+                Cursor.Current = Cursors.WaitCursor;
 
-                Database1.InitialiseDatabase(connDb1);
-                openDbButton1.Text = "Opened";
-                openDbButton1.ForeColor = Color.FromArgb(50, 200, 50);
+                Database1.InitialiseDatabase(connDb1,databasePath1);
+               
                 
                 visio.ShowTables(listView1, Database1);
+
+                databasePath1.Text = databasePath;
+                openDbButton1.ForeColor = Color.FromArgb(50, 200, 50);
+                openDbButton1.Text = "Opened";
+
+                Cursor.Current = Cursors.Default;
             }
         }
 
@@ -106,7 +112,7 @@ namespace WindowsFormsApplication2
                     databasePath2.Text = openFileDialogDatabase2.FileName;
                 }
             }
-
+            string databasePath = databasePath2.Text;
             String conn_string = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + databasePath2.Text + ";Persist Security Info=False";
             try
             {
@@ -127,12 +133,16 @@ namespace WindowsFormsApplication2
             if (connDb2.State == ConnectionState.Open)
             {
                 visio.ClearData(listView2, dataGridView1, Database2);
+                Cursor.Current = Cursors.WaitCursor;
 
-                Database2.InitialiseDatabase(connDb2);
-                openDbButton2.Text = "Opened";
-                openDbButton2.ForeColor = Color.FromArgb(50, 200, 50);
-                                
+                Database2.InitialiseDatabase(connDb2,databasePath2);
                 visio.ShowTables(listView2, Database2);
+                
+                databasePath2.Text = databasePath;
+                openDbButton2.ForeColor = Color.FromArgb(50, 200, 50);
+                openDbButton2.Text = "Opened";
+
+                Cursor.Current = Cursors.Default;
             }
         }
 
