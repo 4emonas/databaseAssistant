@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -65,6 +67,7 @@
             // 
             // tableLayoutPanel1
             // 
+            this.tableLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(228)))), ((int)(((byte)(255)))));
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.menuStrip1, 0, 0);
@@ -83,6 +86,8 @@
             // 
             // menuStrip1
             // 
+            this.menuStrip1.AllowMerge = false;
+            this.menuStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(244)))), ((int)(((byte)(255)))));
             this.menuStrip1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -94,7 +99,7 @@
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
             this.menuStrip1.Size = new System.Drawing.Size(893, 34);
-            this.menuStrip1.TabIndex = 0;
+            this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // fileToolStripMenuItem
@@ -207,7 +212,9 @@
             // labelDatabasePath1
             // 
             this.labelDatabasePath1.AutoSize = true;
+            this.labelDatabasePath1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(228)))), ((int)(((byte)(255)))));
             this.labelDatabasePath1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelDatabasePath1.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelDatabasePath1.Location = new System.Drawing.Point(3, 5);
             this.labelDatabasePath1.Margin = new System.Windows.Forms.Padding(3, 5, 3, 0);
             this.labelDatabasePath1.Name = "labelDatabasePath1";
@@ -217,20 +224,26 @@
             // 
             // openDbButton1
             // 
+            this.openDbButton1.BackColor = System.Drawing.Color.White;
+            this.openDbButton1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.openDbButton1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.openDbButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.openDbButton1.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.openDbButton1.Location = new System.Drawing.Point(355, 2);
             this.openDbButton1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.openDbButton1.Name = "openDbButton1";
             this.openDbButton1.Size = new System.Drawing.Size(84, 42);
             this.openDbButton1.TabIndex = 2;
             this.openDbButton1.Text = "Browse";
-            this.openDbButton1.UseVisualStyleBackColor = true;
+            this.openDbButton1.UseVisualStyleBackColor = false;
             this.openDbButton1.Click += new System.EventHandler(this.openDbButton1_Click);
             // 
             // labelDatabasePath2
             // 
             this.labelDatabasePath2.AutoSize = true;
+            this.labelDatabasePath2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(228)))), ((int)(((byte)(255)))));
             this.labelDatabasePath2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelDatabasePath2.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelDatabasePath2.Location = new System.Drawing.Point(445, 5);
             this.labelDatabasePath2.Margin = new System.Windows.Forms.Padding(3, 5, 3, 0);
             this.labelDatabasePath2.Name = "labelDatabasePath2";
@@ -240,32 +253,37 @@
             // 
             // openDbButton2
             // 
+            this.openDbButton2.BackColor = System.Drawing.Color.White;
             this.openDbButton2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.openDbButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.openDbButton2.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.openDbButton2.Location = new System.Drawing.Point(797, 2);
             this.openDbButton2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.openDbButton2.Name = "openDbButton2";
             this.openDbButton2.Size = new System.Drawing.Size(87, 42);
             this.openDbButton2.TabIndex = 5;
             this.openDbButton2.Text = "Browse";
-            this.openDbButton2.UseVisualStyleBackColor = true;
+            this.openDbButton2.UseVisualStyleBackColor = false;
             this.openDbButton2.Click += new System.EventHandler(this.openDbButton2_Click);
             // 
             // databasePath1
             // 
             this.databasePath1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.databasePath1.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.databasePath1.Location = new System.Drawing.Point(113, 12);
             this.databasePath1.Margin = new System.Windows.Forms.Padding(3, 12, 3, 2);
             this.databasePath1.Name = "databasePath1";
-            this.databasePath1.Size = new System.Drawing.Size(236, 22);
-            this.databasePath1.TabIndex = 6;
+            this.databasePath1.Size = new System.Drawing.Size(236, 26);
+            this.databasePath1.TabIndex = 0;
             // 
             // databasePath2
             // 
             this.databasePath2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.databasePath2.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.databasePath2.Location = new System.Drawing.Point(555, 12);
             this.databasePath2.Margin = new System.Windows.Forms.Padding(3, 12, 3, 2);
             this.databasePath2.Name = "databasePath2";
-            this.databasePath2.Size = new System.Drawing.Size(236, 22);
+            this.databasePath2.Size = new System.Drawing.Size(236, 26);
             this.databasePath2.TabIndex = 7;
             // 
             // tableLayoutPanel3
@@ -291,7 +309,16 @@
             // dataGridView2
             // 
             this.dataGridView2.AllowUserToOrderColumns = true;
+            this.dataGridView2.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Calibri", 7.8F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView2.DefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView2.Location = new System.Drawing.Point(533, 2);
             this.dataGridView2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -303,7 +330,16 @@
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToOrderColumns = true;
+            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Calibri", 7.8F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(91, 2);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -315,7 +351,7 @@
             // listView1
             // 
             this.listView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listView1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listView1.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listView1.Location = new System.Drawing.Point(4, 4);
             this.listView1.Margin = new System.Windows.Forms.Padding(4);
             this.listView1.Name = "listView1";
@@ -328,6 +364,7 @@
             // listView2
             // 
             this.listView2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listView2.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listView2.Location = new System.Drawing.Point(446, 4);
             this.listView2.Margin = new System.Windows.Forms.Padding(4);
             this.listView2.Name = "listView2";
