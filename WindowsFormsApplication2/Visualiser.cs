@@ -218,7 +218,13 @@ namespace WindowsFormsApplication2
             {//error handling in case of a dummy table
                 for (int i = 0; i < dgv.Rows.Count; i++)
                 {
-                    dgv.Rows[i].Cells[y].Style.BackColor = ColourPicker(colour);
+                    if (dgv.Rows[i].Cells[y].Style.BackColor == System.Drawing.Color.Yellow)
+                    {
+                        dgv.Rows[i].Cells[y].Style.BackColor = ColourPicker("purple");
+                    }else
+                    {
+                        dgv.Rows[i].Cells[y].Style.BackColor = ColourPicker(colour);
+                    }                   
                 }
             }
             catch (System.ArgumentOutOfRangeException)
@@ -255,7 +261,14 @@ namespace WindowsFormsApplication2
             {//error handling in case of a dummy table
                 for (int j = 0; j < dgv.Rows[x].Cells.Count; j++)
                 {
-                    dgv.Rows[x].Cells[j].Style.BackColor = ColourPicker(colour);
+                    if (dgv.Rows[x].Cells[j].Style.BackColor == System.Drawing.Color.Orange)
+                    {
+                        dgv.Rows[x].Cells[j].Style.BackColor = ColourPicker("purple");
+                    }
+                    else
+                    {
+                        dgv.Rows[x].Cells[j].Style.BackColor = ColourPicker(colour);
+                    }                    
                 }
             }
             catch (System.ArgumentOutOfRangeException)
