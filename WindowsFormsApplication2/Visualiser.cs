@@ -324,6 +324,10 @@ namespace WindowsFormsApplication2
             {
                 return System.Drawing.Color.Orange;
             }
+            else if (colour == "purple")
+            {
+                return System.Drawing.Color.Purple;
+            }
             else
             {
                 return System.Drawing.Color.White;
