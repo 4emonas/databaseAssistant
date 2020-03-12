@@ -191,23 +191,25 @@ namespace WindowsFormsApplication2
 
         private void ShowExtraColumnsInTable(string tableName, DataGridView dgvLeft, DataGridView dgvRight, Database dbLeft, Database dbRight)
         {
-            int tableLeftColumnNumbers = dbLeft.getTableObject(tableName).GetFieldsNumber();
-            int tableRightColumnNumbers = dbRight.getTableObject(tableName).GetFieldsNumber();
 
-            if (tableLeftColumnNumbers > tableRightColumnNumbers)
+            for (int i = 0; i < dbLeft.getTableObject(tableName).GetFieldsNumber(); i++)
             {
-                for (int i = tableRightColumnNumbers; i < tableRightColumnNumbers + (tableLeftColumnNumbers - tableRightColumnNumbers); i++)
+                string tempColumnName = dbLeft.getTableObject(tableName).GetFields()[i];
+                if (!dbRight.getTableObject(tableName).ColumnExists(tempColumnName))
                 {
                     HighlightDataGridViewColumn(dgvLeft, i, "orange");
                 }
             }
-            else if (tableRightColumnNumbers > tableLeftColumnNumbers)
+
+            for (int i = 0; i < dbRight.getTableObject(tableName).GetFieldsNumber(); i++)
             {
-                for (int i = tableLeftColumnNumbers; i < tableLeftColumnNumbers + (tableRightColumnNumbers - tableLeftColumnNumbers); i++)
+                string tempColumnName = dbRight.getTableObject(tableName).GetFields()[i];
+                if (!dbLeft.getTableObject(tableName).ColumnExists(tempColumnName))
                 {
                     HighlightDataGridViewColumn(dgvRight, i, "orange");
                 }
             }
+
         }
         //Highlights the extra columns
         private void HighlightDataGridViewColumn(DataGridView dgv, int y, string colour)
