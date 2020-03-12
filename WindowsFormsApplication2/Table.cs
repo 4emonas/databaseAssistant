@@ -49,6 +49,15 @@ namespace WindowsFormsApplication2
             ReadInTableData(conn);      //get the table data
         }
 
+        public bool ColumnExists(string columnName)
+        {
+            if (fields.Contains(columnName))
+            {
+                return true;
+            }
+            return false;
+        }
+
         //========== private functions ===========//
 
         //gets the number of records in each table
